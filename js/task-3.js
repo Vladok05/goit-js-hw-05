@@ -1,55 +1,90 @@
 `use strict`;
-// Напиши стрілочну функцію getTotalBalanceByGender(users, gender), яка прийматиме два параметра:
-// перший параметр users — масив об’єктів користувачів,
-// другий параметр gender — рядок, що зберігає стать.
-// Функція має використовувати ланцюжок виклику методів та повертати загальний баланс користувачів
-// (властивість balance), стать яких(властивість gender) збігається зі значенням параметра gender.
-// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
-const clients = [
-  {
-    name: 'Moore Hensley',
-    gender: 'male',
-    balance: 2811,
-  },
-  {
-    name: 'Sharlene Bush',
-    gender: 'female',
-    balance: 3821,
-  },
-  {
-    name: 'Ross Vazquez',
-    gender: 'male',
-    balance: 3793,
-  },
-  {
-    name: 'Elma Head',
-    gender: 'female',
-    balance: 2278,
-  },
-  {
-    name: 'Carey Barr',
-    gender: 'male',
-    balance: 3951,
-  },
-  {
-    name: 'Blackburn Dotson',
-    gender: 'male',
-    balance: 1498,
-  },
-  {
-    name: 'Sheree Anthony',
-    gender: 'female',
-    balance: 2764,
-  },
-];
-const getTotalBalanceByGender = (users, gender) => {
-  return users
-    .filter(genders => genders.gender === gender)
-    .reduce((totalBalance, { balance }) => {
-      return (totalBalance += balance);
-    }, 0);
-};
-console.log('task-3');
-console.log(getTotalBalanceByGender(clients, 'male')); // 12053
+// Напиши стрілочну функцію sortByDescendingFriendCount(users) , яка прийматиме один параметр users — масив об’єктів користувачів.
 
-console.log(getTotalBalanceByGender(clients, 'female')); // 8863
+// Функція має повертати масив усіх користувачів, відсортованих за спаданням кількостій їх друзів (властивість friends).
+
+// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
+const sortByDescendingFriendCount = users => {
+  return users.toSorted(
+    (firstFriends, secondFriednds) =>
+      secondFriednds.friends.length - firstFriends.friends.length
+  );
+};
+
+console.log('task-3');
+console.log(
+  sortByDescendingFriendCount([
+    {
+      name: 'Moore Hensley',
+      friends: ['Sharron Pace'],
+      gender: 'male',
+    },
+    {
+      name: 'Sharlene Bush',
+      friends: ['Briana Decker', 'Sharron Pace'],
+      gender: 'female',
+    },
+    {
+      name: 'Ross Vazquez',
+      friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+      gender: 'male',
+    },
+    {
+      name: 'Elma Head',
+      friends: ['Goldie Gentry', 'Aisha Tran'],
+      gender: 'female',
+    },
+    {
+      name: 'Carey Barr',
+      friends: ['Jordan Sampson', 'Eddie Strong'],
+      gender: 'male',
+    },
+    {
+      name: 'Blackburn Dotson',
+      friends: ['Jacklyn Lucas', 'Linda Chapman'],
+      gender: 'male',
+    },
+    {
+      name: 'Sheree Anthony',
+      friends: ['Goldie Gentry', 'Briana Decker'],
+      gender: 'female',
+    },
+  ])
+);
+// [
+//   {
+//     name: "Ross Vazquez",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Moore Hensley",
+//     friends: ["Sharron Pace"],
+//     gender: "male"
+//   }
+// ]
