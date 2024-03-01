@@ -1,31 +1,55 @@
 `use strict`;
-// Об’єкт profile описує профіль користувача на ігровій платформі.У його властивостях зберігається ім’я профілю
-// username та кількість активних годин playTime, проведених у грі.
-
-// Доповни об’єкт profile методами для роботи з його властивостями.
-
-// Метод changeUsername(newName) повинен приймати рядок (нове ім’я) в параметр newName та змінювати значення властивості username на нове. Нічого не повертає.
-// Метод updatePlayTime(hours) повинен приймати число (кількість годин) у параметр hours та збільшити на нього значення властивості playTime. Нічого не повертає.
-// Метод getInfo() має повертати рядок формату <Username> has <amount> active hours!, де <Username> — це ім’я профілю, а <amount> — кількість ігрових годин.
+// Напиши стрілочну функцію getTotalBalanceByGender(users, gender), яка прийматиме два параметра:
+// перший параметр users — масив об’єктів користувачів,
+// другий параметр gender — рядок, що зберігає стать.
+// Функція має використовувати ланцюжок виклику методів та повертати загальний баланс користувачів
+// (властивість balance), стать яких(властивість gender) збігається зі значенням параметра gender.
 // Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
-
-const profile = {
-  username: 'Jacob',
-  playTime: 300,
-  changeUsername(newName) {
-    if (this.username !== newName) this.username = newName;
+const clients = [
+  {
+    name: 'Moore Hensley',
+    gender: 'male',
+    balance: 2811,
   },
-  updatePlayTime(hours) {
-    this.playTime += hours;
+  {
+    name: 'Sharlene Bush',
+    gender: 'female',
+    balance: 3821,
   },
-  getInfo() {
-    return `${this.username} has ${this.playTime} active hours!`;
+  {
+    name: 'Ross Vazquez',
+    gender: 'male',
+    balance: 3793,
   },
+  {
+    name: 'Elma Head',
+    gender: 'female',
+    balance: 2278,
+  },
+  {
+    name: 'Carey Barr',
+    gender: 'male',
+    balance: 3951,
+  },
+  {
+    name: 'Blackburn Dotson',
+    gender: 'male',
+    balance: 1498,
+  },
+  {
+    name: 'Sheree Anthony',
+    gender: 'female',
+    balance: 2764,
+  },
+];
+const getTotalBalanceByGender = (users, gender) => {
+  return users
+    .filter(genders => genders.gender === gender)
+    .reduce((totalBalance, { balance }) => {
+      return (totalBalance += balance);
+    }, 0);
 };
 console.log('task-3');
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+console.log(getTotalBalanceByGender(clients, 'male')); // 12053
 
-profile.changeUsername('Marco');
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
-
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
+console.log(getTotalBalanceByGender(clients, 'female')); // 8863
